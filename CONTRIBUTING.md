@@ -68,14 +68,26 @@ To set up the development environment:
 
    ```bash
    pip install poetry
-   # Install with all extras to ensure all tests pass
-   poetry install -E all
+   # Enter the virtual environment bubble.
+   # Modern Poetry uses 'shell', while older versions might need 'env activate'
+   poetry shell
+   # OR: poetry env activate (for older versions or specific setups)
+
+   # Install specific extras as needed (e.g. AWS, PySpark)
+   # Note: pyspark and databricks-connect are mutually exclusive
+   poetry install -E aws -E pyspark
+
+   # Run setup.py to configure pre-commit hooks
    python setup.py
    ```
 
 3. **Run Tests**:
 
    ```bash
+   # If 'poetry shell' above was successful, you can run directly:
+   pytest
+
+   # If you encounter "ModuleNotFoundError", use the more robust:
    poetry run pytest
    ```
 
