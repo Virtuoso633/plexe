@@ -59,25 +59,25 @@ To set up the development environment:
 
 1. **Clone the Repository**:
 
-    ```bash
-    git clone https://github.com/plexe-ai/plexe.git
-    cd plexe
-    ```
-
-2. **Install Dependencies**:
-    
-    ```
-   -pip install poetry 
-   -poetry env activate or poetry shell depending on the Poetry version being used 
-   -python setup.py
+   ```bash
+   git clone https://github.com/plexe-ai/plexe.git
+   cd plexe
    ```
 
+2. **Install Dependencies**:
+
+   ```bash
+   pip install poetry
+   # Install with all extras to ensure all tests pass
+   poetry install -E all
+   python setup.py
+   ```
 
 3. **Run Tests**:
 
-    ```bash
-    pytest
-    ```
+   ```bash
+   poetry run pytest
+   ```
 
 Ensure all tests pass before making contributions.
 
@@ -103,6 +103,6 @@ Write clear and concise commit messages:
 
 - **Example**:
 
-    ```bash
-    feat(model): add support for gemini
-    ```
+  ```bash
+  feat(model): add support for gemini
+  ```
