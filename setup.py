@@ -1,3 +1,9 @@
+"""
+Setup script for the plexe project.
+
+Installs core dependencies and configures pre-commit hooks.
+"""
+
 import subprocess
 import sys
 
@@ -21,7 +27,7 @@ def main():
     run_command("poetry install")
 
     print("Installing pre-commit hooks...")
-    run_command("pre-commit install")
+    run_command("poetry run pre-commit install")
 
     print("Setup complete!")
 
