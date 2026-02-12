@@ -59,25 +59,37 @@ To set up the development environment:
 
 1. **Clone the Repository**:
 
-    ```bash
-    git clone https://github.com/plexe-ai/plexe.git
-    cd plexe
-    ```
-
-2. **Install Dependencies**:
-    
-    ```
-   -pip install poetry 
-   -poetry env activate or poetry shell depending on the Poetry version being used 
-   -python setup.py
+   ```bash
+   git clone https://github.com/plexe-ai/plexe.git
+   cd plexe
    ```
 
+2. **Install Dependencies**:
+
+   ```bash
+   pip install poetry
+   # Enter the virtual environment bubble.
+   # Modern Poetry uses 'shell', while older versions might need 'env activate'
+   poetry shell
+   # OR: poetry env activate (for older versions or specific setups)
+
+   # Install specific extras as needed (e.g. AWS, PySpark)
+   # Note: pyspark and databricks-connect are mutually exclusive
+   poetry install -E aws -E pyspark
+
+   # Run setup.py to configure pre-commit hooks
+   python setup.py
+   ```
 
 3. **Run Tests**:
 
-    ```bash
-    pytest
-    ```
+   ```bash
+   # If 'poetry shell' above was successful, you can run directly:
+   pytest
+
+   # If you encounter "ModuleNotFoundError", use the more robust:
+   poetry run pytest
+   ```
 
 Ensure all tests pass before making contributions.
 
@@ -103,6 +115,6 @@ Write clear and concise commit messages:
 
 - **Example**:
 
-    ```bash
-    feat(model): add support for gemini
-    ```
+  ```bash
+  feat(model): add support for gemini
+  ```
